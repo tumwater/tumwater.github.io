@@ -1,0 +1,269 @@
+html {
+  height: 100%;
+  scrollbar-width: none;
+}
+
+ body {
+  min-height: 100%;
+  background: radial-gradient(#858585, #151515);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  -ms-overflow-style: none;
+  font-family: 'Lexend', sans-serif;
+  color: white;
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
+body.success  {
+  background: radial-gradient(#12cf21, #002c05);
+  transition: 0.2s ease;
+}
+/* center everything in game container */
+.game-container {
+  margin: 0px auto;
+}
+/*
+ * Map screen
+ */
+
+.game-map {
+  position: relative;
+}
+/*
+ * Output text styles
+ */
+
+p {
+  margin: 10px 0px;
+  padding: 0px;
+  
+}
+
+
+/*
+ * Map on left, controls on right
+ * Adapted for the mobile Medium app
+ */
+#map-and-controls {
+  display: block;
+  justify-content: center;
+  align-items: center;
+}
+
+#success-msg {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  position: relative;
+  display: block;
+  padding: 16px 8px;
+  width: calc(100% -1px);
+  font-size: larger;
+  background-color: rgba(36, 36, 36, 0.95);
+}
+ body.success #success-msg {
+  opacity: 1;
+  transition: opacity 0.2 ease;
+}
+
+
+
+/*
+ * Layers and tiles are positioned absolutely
+ * within coordinate system of .game-map 
+ */
+div.layer,
+div.layer div {
+  position: absolute;
+}
+/* border for floors and wall */
+#tiles div {
+  border: 1px solid grey;
+}
+
+/*
+ * Default wall and floor styles
+ */
+
+.levelOneTheme .floor {
+  background-color: rgb(131, 255, 125);
+}
+
+.levelOneTheme .wall {
+  background-color: rgb(31, 55, 25);
+}
+
+.levelTwoTheme .floor {
+  background-color: rgb(237, 121, 255);
+}
+.levelTwoTheme .wall {
+  background-color: rgb(100, 51, 103);
+}
+
+.levelThreeTheme .floor {
+  background-color: rgb(255, 255, 132);
+}
+.levelThreeTheme .wall {
+  background-color: rgb(105, 101, 54);
+}
+
+.levelFourTheme .floor {
+  background-color: rgb(194, 194, 194);
+}
+.levelFourTheme .wall {
+  background-color: rgb(46, 46, 46);
+}
+
+.levelFiveTheme .floor {
+  background-color: rgb(255, 123, 123);
+}
+.levelFiveTheme .wall {
+  background-color: rgb(102, 47, 47);
+}
+
+.levelSixTheme .floor {
+  background-color: rgb(255, 159, 111);
+}
+.levelSixTheme .wall {
+  background-color: rgb(105, 70, 50);
+}
+
+.levelSevenTheme .floor {
+  background-color: rgb(253, 113, 204);
+}
+.levelSevenTheme .wall {
+  background-color: rgb(95, 35, 75);
+}
+
+.levelEightTheme .floor {
+  background-color: rgb(115, 147, 255);
+}
+.levelEightTheme .wall {
+  background-color: rgb(28, 40, 68);
+}
+
+.levelNineTheme .floor {
+  background-color: rgb(206, 184, 167);
+}
+.levelNineTheme .wall {
+  background-color: rgb(78, 69, 64);
+}
+
+.levelTenTheme .floor {
+  background-color: rgb(223, 223, 223);
+}
+.levelTenTheme .wall {
+  background-color: rgb(49, 49, 49);
+}
+
+/*
+ * player and goal are slightly smaller than tiles
+ */
+.player, 
+.goal, .clue1, .clue2, .clue3 {
+  transform-origin: center;
+  transform:scale(0.85);
+}
+/*
+ * Goal colors
+ */
+.goal {
+  background-color: #51a46d;
+  border: 1px solid #98720b;
+}
+
+.clue1, .clue2, .clue3 {
+  background-color: #5c3939;
+  border: 1px solid #98720b;
+}
+/*
+ *  Player default colors
+ */
+.player {
+  background-color: #505050;
+  border: 1px solid #008000;
+  transition: left 0.2s ease, top 0.2s ease;
+}
+/*
+ * Player wobbles when colliding with wall or border
+ */
+.player.collide {  
+  animation: wobble 0.5s;
+  animation-iteration-count: infinite;
+  transition: background-color 0.2s;
+  
+}
+
+/* 
+ * Wobble animation
+ */
+@keyframes wobble {
+  0% { transform: scale(0.85) translate(1px, 1px); }
+  10% { transform: scale(0.85) translate(-1px, -2px); }
+  20% { transform: scale(0.85) translate(-3px, 0px); }
+  30% { transform: scale(0.85) translate(3px, 2px); }
+  40% { transform: scale(0.85) translate(1px, -1px);}
+  50% { transform: scale(0.85) translate(-1px, 2px); }
+  60% { transform: scale(0.85) translate(-3px, 1px); }
+  70% { transform: scale(0.85) translate(3px, 1px); }
+  80% { transform: scale(0.85) translate(-1px, -1px); }
+  90% { transform: scale(0.85) translate(1px, 2px); }
+  100% { transform: scale(0.85) translate(1px, -2px);; }
+}
+
+.title {
+  font-weight: 700;
+  background-color: rgb(36, 36, 36);
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.accordion {
+  background-color: rgb(36, 36, 36);
+  color: #ffffff;
+  cursor: pointer;
+  margin-top: 30px;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  transition: 0.15s;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion:hover {
+  background-color: rgb(25, 25, 25);
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 20px;
+  background-color: rgb(211, 211, 211);
+  color:rgb(36, 36, 36);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  font-weight: 300;
+  margin-bottom: 20px;
+  border-radius: 0px 0px 4px 4px;
+}
+
+.accordion:after {
+  content: '▶'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #ffffff;
+  float: right;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+.active:after {
+  content: "▼"; /* Unicode character for "minus" sign (-) */
+}
