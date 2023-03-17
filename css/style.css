@@ -176,8 +176,8 @@ div.layer div {
 }
 
 .clue1, .clue2, .clue3 {
-  background-color: #5c3939;
-  border: 1px solid #98720b;
+  background-color: #003968;
+  border: 1px solid #5d5d5d;
 }
 /*
  *  Player default colors
@@ -266,4 +266,15 @@ div.layer div {
 
 .active:after {
   content: "▼"; /* Unicode character for "minus" sign (-) */
+}
+
+.ClueOne, .ClueTwo, .ClueThree {
+  display: none;
+  background-color: rgba(36, 36, 36, .9);
+  position: fixed;
+  padding: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
 }
